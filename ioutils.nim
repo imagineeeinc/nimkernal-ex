@@ -41,13 +41,13 @@ proc makeEntry*(c: char, color: TAttribute): TEntry =
 
 proc writeChar*(vram: PVidMem, entry: TEntry, pos: TPos) =
   ## Writes a character at the specified ``pos``.
-  let index = (80 * pos.y) + pos.x
+  let index = (VGAWidth * pos.y) + pos.x
   vram[index] = entry
 
-proc rainbow*(vram: PVidMem, text: string, pos: TPos) =
+proc rainbow*(vram: PVidMem, text: string, bg: TVGAColor, pos: TPos) =
   ## Writes a string at the specified ``pos`` with varying colors which, despite
   ## the name of this function, do not resemble a rainbow.
-  var colorBG = DarkGrey
+  var colorBG = bg
   var colorFG = Blue
   proc nextColor(color: TVGAColor, skip: set[TVGAColor]): TVGAColor =
     if color == White:

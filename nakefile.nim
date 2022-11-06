@@ -19,10 +19,17 @@ task "build", "Builds the operating system.":
   
   echo "Linking..."
   
-  direShell CC, "-T linker.ld -o main.bin -ffreestanding -O2 -nostdlib boot.o nimcache/@mmain.nim.c.o nimcache/stdlib_system.nim.c.o nimcache/@mioutils.nim.c.o -lgcc"
+  var paths: string = ""
+  for path in walkFiles("nimcache/*.c.o"):
+    paths = paths & " " & path
+  direShell CC, "-T linker.ld -o main.bin -ffreestanding -O2 -nostdlib boot.o " & paths & " -lgcc" ##"nimcache/@mmain.nim.c.o nimcache/stdlib_system.nim.c.o nimcache/@mioutils.nim.c.o"
   
   echo "Done."
   
 task "run", "Runs the operating system using QEMU.":
   if not existsFile("main.bin"): runTask("build")
+  direShell "qemu-system-i386 -kernel main.bin"
+
+task "test", "Recompiles and runs the operating system using QEMU.":
+  runTask("build")
   direShell "qemu-system-i386 -kernel main.bin"

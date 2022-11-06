@@ -1,29 +1,19 @@
 # nimkernel
 
-This is a small 32bit (i686) kernel written using the Nim programming language.
+This is a small 32bit (i686) kernel written using the Nim programming language, a fork of [dom's nim kernal](https://github.com/dom96/nimkernel).
 
-I have been wanting to do this for a while but it wasn't until people in the #nim IRC
-channel inquired about Nim OS dev and the
-[rustboot](https://github.com/charliesome/rustboot) kernel inspired me that I finally did it.
+It's main difference here is the small tweaks and enhancements like adding a background option to rainbow text and a windows build system.
 
-It doesn't do much, but it doesn't need to. Its purpose is to provide a starting
-point for anyone wishing to write an OS in Nim.
-
-It still manages to do a little more than fill a screen with a certain color.
-Nimkernel implements:
-
+Features:
 * A ``writeString`` function which shows a string on screen in a specified
   position.
 * A ``rainbow`` function which shows a string with a rainbow-like text
-  foreground color differentiation in a specified position.
+  foreground colour differentiation in a specified position.
 * Some simple error handling by implementing Nim system.nim's ``panic``
   function.
 * Support for 16 colors with a brilliant type safe API!
 
-![](http://picheta.me/private/images/nimkernel2.png)
-
-**Note**: The error at the bottom is intentional, it is used to show that
-the error handling works properly.
+![A screenshot of the nimkernal-ex](screenshot.png)
 
 ## Setup
 
@@ -36,12 +26,8 @@ You are required to have:
 
 \* You can always grab the nake library manually from [here](https://github.com/fowlmouth/nake).
 
-### Linux
-
-I have performed this setup on a Arch Linux machine, but all other distros
-should work too.
-
-#### Building a cross compiler
+### Building a cross compiler
+This is done on a Linux machine, I haven't tried it yet. I think [this repo](https://github.com/lordmilko/i686-elf-tools#i686-elf-tools) might help for compiling on other platforms but not tested.
 
 For more information take a look at the [OSDev article](http://wiki.osdev.org/GCC_Cross-Compiler).
 
@@ -81,33 +67,36 @@ You should then add it to your PATH permanently or temporarily by doing:
 export PATH=$PATH:$HOME/cross-tools/bin
 ```
 
-#### Downloading cross compiler binaries
+### Downloading cross compiler binaries (Windows & Linux)
 
-If for some reason you either can't or don't want to build your own toolchain you can grab binaries from [https://github.com/lordmilko/i686-elf-tools/releases](https://github.com/lordmilko/i686-elf-tools/releases)
+If you want prebuilt binaries, get them from here [https://github.com/lordmilko/i686-elf-tools/releases](https://github.com/lordmilko/i686-elf-tools/releases)
 
 Please note that these are a bit outdated but they are confirmed to work.
 
-#### Nim setup
+You would want to put the `bin` folder somewhere and add it to you `PATH` variable on windows and Linux.
 
-Follow the instructions in the [Nim repo](https://github.com/Araq/nim) to bootstrap Nim and put it in your PATH.
+There seems to be also a x64 toolchain, so we can try compiling this for x64 in the future.
 
-Do the same for [nimble](https://github.com/nim-lang/nimble) and install
-``nake`` by executing ``nimble install nake`` or
-alternatively just save [nake](https://github.com/fowlmouth/nake/raw/master/nake.nim)
-into the root dir of this repo.
+### Nim setup
+
+Follow the instructions in on the [Nim Website](https://nim-lang.org/install.html) to install Nim.
+
+Install `nake` by running `nimble update && nimble install nake`.
 
 You can then compile the nakefile and therefore compile nimkernel:
 
 ```bash
-$ nim c nakefile
-$ ./nakefile run
+# to build
+nake build
+# to run
+nake run
+# to rebuild and run
+nake test
 ```
 
-This will automatically build and run the kernel using QEMU.
+`Run` and `Test` automatically build and run the kernel using QEMU.
 
 ## License
 
-Nimkernel is licensed under the MIT license.
-
- 
+Nimkernel-ex is licensed under the MIT license.
 
