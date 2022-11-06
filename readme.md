@@ -22,9 +22,6 @@ You are required to have:
 * QEMU
 * a C and asm cross-compiler for i686
 * Nim 1.6.0 or higher
-* nimble (*)
-
-\* You can always grab the nake library manually from [here](https://github.com/fowlmouth/nake).
 
 ### Building a cross compiler
 This is done on a Linux machine, I haven't tried it yet. I think [this repo](https://github.com/lordmilko/i686-elf-tools#i686-elf-tools) might help for compiling on other platforms but not tested.
