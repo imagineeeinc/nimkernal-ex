@@ -1,4 +1,4 @@
-# nimkernel
+<h1 align="center">nimkernel</h1>
 
 This is a small 32bit (i686) kernel written using the Nim programming language, a fork of [dom's nim kernal](https://github.com/dom96/nimkernel).
 
