@@ -80,7 +80,7 @@ Follow the instructions in on the [Nim Website](https://nim-lang.org/install.htm
 
 Install `nake` by running `nimble update && nimble install nake`.
 
-You can then compile the nakefile and therefore compile nimkernel:
+You can then compile the nakefile (`nim c nakefile`) and therefore compile nimkernel:
 
 ```bash
 # to build
