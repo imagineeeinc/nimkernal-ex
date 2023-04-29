@@ -97,3 +97,9 @@ nake test
 
 Nimkernel-ex is licensed under the MIT license.
 
+<p align="center">
+  <a href="https://imagineee.web.app/">
+    <img height="64px" src="https://imagineeeinc.github.io/made-with-love-by-imagineee/made-with-love-sky-blue.svg" alt="Made with love by imagineee">
+  </a>
+</p>
+
